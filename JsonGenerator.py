@@ -1,9 +1,7 @@
 # @Author : Charly1307
 # Version : 1.0
-
 import json
 import os
-
 # Change the path
 file_path = os.path.join('/home/carlos/Escritorio/')
 
@@ -17,7 +15,6 @@ item_models = {
         "layer0": ""
     }
 }
-
 # Insert the variables
 item_models["textures"]['layer0'] = mod_id + ':item/' + item_id
 
