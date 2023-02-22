@@ -12,7 +12,7 @@ Run from cmd:
 EXAMPLE
 
 ```
-python ItemModels.py
+python Main.py
 ```
 ## License
 GPL-3.0
