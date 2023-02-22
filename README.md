@@ -6,10 +6,9 @@
 
 ## You need Python
 
-This console app need [Python](https://www.python.org/) to run.
+This console app need [Python](https://www.python.org/) to run(Windows)
 
 Run from cmd:
-EXAMPLE
 
 ```
 python Main.py
