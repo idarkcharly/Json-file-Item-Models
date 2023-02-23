@@ -4,7 +4,7 @@
 import os
 import json
 
-# IMPORTANT, CHANGE PATH!
+# IMPORTANT, CHANGE PATH AND MOD_ID!
 PATH = os.path.join("C:/Users/carlos/Desktop/JsonFiles/")
 MOD_ID = "decorock"
 
@@ -22,6 +22,15 @@ BLOCK_MODEL = {
 
     }
 }
+BLOCKSTATES = {
+    "variants": {
+        "": {"model": ""}
+    }
+}
+
+BLOCK_ITEM = {
+    "parent": "",
+}
 
 
 def CreateItem():
@@ -33,7 +42,6 @@ def CreateItem():
         with open(PATH + item_id+'.json', "w") as outfile:
             outfile.write(json_object)
             print("=======SUCCESS=======\n")
-            # break
 
 
 def CreateBlock():
@@ -48,16 +56,49 @@ def CreateBlock():
             # break
 
 
-# MENU CALLING FUNCS
-print("================welcome================\n")
-print("Json files generator\n")
-print("1) Create Item Models")
-print("2) Create Block Models\n")
-option = int(input('Enter your choice:'))
+def CreateBlockStates():
+    while True:
+        block_id = str(input("Insert the block id: \n"))
+        BLOCKSTATES["variants"]['']['model'] = MOD_ID + ':block/' + block_id
+        # Serializing json
+        json_object = json.dumps(BLOCKSTATES, indent=4)
+        # Generate json file
+        with open(PATH + block_id+'.json', "w") as outfile:
+            outfile.write(json_object)
+            print("=======SUCCESS=======\n")
 
-if option == 1:
-    CreateItem()
-elif option == 2:
-    CreateBlock()
-else:
-    print("Invalid option")
+
+def CreateBlockItem():
+    while True:
+        block_id = str(input("Insert the Block id\n"))
+        BLOCK_ITEM["parent"] = MOD_ID + ':block/' + block_id
+        # Serializing & save json file
+        json_object = json.dumps(BLOCK_ITEM, indent=4)
+        with open(PATH + block_id+'.json', "w") as outfile:
+            outfile.write(json_object)
+            print("=======SUCCESS=======\n")
+
+
+# MAIN FUNC
+def Main():
+    print("================WELCOME================\n")
+    print("Json files generator\n")
+    print("1) Create Item Models")
+    print("2) Create Block Models")
+    print("3) Create BlockStates")
+    print("4) Create Block Item Models\n")
+    option = int(input('Enter your choice:'))
+
+    if option == 1:
+        CreateItem()
+    elif option == 2:
+        CreateBlock()
+    elif option == 3:
+        CreateBlockStates()
+    elif option == 4:
+        CreateBlockItem()
+    else:
+        print("Invalid option")
+
+
+Main()
