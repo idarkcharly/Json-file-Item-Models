@@ -3,6 +3,7 @@
 # Stopped manual
 import os
 import json
+import sys
 
 # IMPORTANT, CHANGE PATH AND MOD_ID!
 PATH = os.path.join("C:/Users/carlos/Desktop/JsonFiles/")
@@ -81,24 +82,33 @@ def CreateBlockItem():
 
 # MAIN FUNC
 def Main():
-    print("================WELCOME================\n")
-    print("Json files generator\n")
-    print("1) Create Item Models")
-    print("2) Create Block Models")
-    print("3) Create BlockStates")
-    print("4) Create Block Item Models\n")
-    option = int(input('Enter your choice:'))
-
-    if option == 1:
-        CreateItem()
-    elif option == 2:
-        CreateBlock()
-    elif option == 3:
-        CreateBlockStates()
-    elif option == 4:
-        CreateBlockItem()
-    else:
-        print("Invalid option")
+    try:
+        print("================WELCOME================\n")
+        print("Json files generator\n")
+        print("1) Create Item Models")
+        print("2) Create Block Models")
+        print("3) Create BlockStates")
+        print("4) Create Block Item Models")
+        print("5) Exit\n")
+        option = int(input('Enter your choice:'))
+        try:
+            if option == 1:
+                CreateItem()
+            elif option == 2:
+                CreateBlock()
+            elif option == 3:
+                CreateBlockStates()
+            elif option == 4:
+                CreateBlockItem()
+            elif option == 5:
+                exit()
+            else:
+                print("Invalid option")
+        except KeyboardInterrupt:
+            print("\n================BACK================\n")
+            Main()
+    except KeyboardInterrupt:
+        exit()
 
 
 Main()
