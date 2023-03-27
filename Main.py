@@ -1,15 +1,14 @@
 # @Author : Charly1307
-# Version : 1.0
-# Stopped manual
+# Version : 1.1
+
 import os
 import json
-import sys
 
 # IMPORTANT, CHANGE PATH AND MOD_ID!
 PATH = os.path.join("C:/Users/carlos/Desktop/JsonFiles/")
 MOD_ID = "decorock"
 
-# JSON FORMAT / PYTHON DICTIONARY
+# DON'T CHANGE THE FORMAT!
 ITEM_MODEL = {
     "parent": "item/generated",
     "textures": {
@@ -38,7 +37,6 @@ def CreateItem():
     while True:
         item_id = str(input("Insert the item id: \n"))
         ITEM_MODEL["textures"]['layer0'] = MOD_ID + ':item/' + item_id
-        # Serializing & save json file
         json_object = json.dumps(ITEM_MODEL, indent=4)
         with open(PATH + item_id+'.json', "w") as outfile:
             outfile.write(json_object)
@@ -49,21 +47,17 @@ def CreateBlock():
     while True:
         block_id = str(input("Insert the block id: \n"))
         BLOCK_MODEL["textures"]['all'] = MOD_ID + ':block/' + block_id
-        # Serializing & save json file
         json_object = json.dumps(BLOCK_MODEL, indent=4)
         with open(PATH + block_id+'.json', "w") as outfile:
             outfile.write(json_object)
             print("=======SUCCESS=======\n")
-            # break
 
 
 def CreateBlockStates():
     while True:
         block_id = str(input("Insert the block id: \n"))
         BLOCKSTATES["variants"]['']['model'] = MOD_ID + ':block/' + block_id
-        # Serializing json
         json_object = json.dumps(BLOCKSTATES, indent=4)
-        # Generate json file
         with open(PATH + block_id+'.json', "w") as outfile:
             outfile.write(json_object)
             print("=======SUCCESS=======\n")
@@ -73,14 +67,12 @@ def CreateBlockItem():
     while True:
         block_id = str(input("Insert the Block id\n"))
         BLOCK_ITEM["parent"] = MOD_ID + ':block/' + block_id
-        # Serializing & save json file
         json_object = json.dumps(BLOCK_ITEM, indent=4)
         with open(PATH + block_id+'.json', "w") as outfile:
             outfile.write(json_object)
             print("=======SUCCESS=======\n")
 
 
-# MAIN FUNC
 def Main():
     try:
         print("================WELCOME================\n")
@@ -108,6 +100,7 @@ def Main():
             print("\n================BACK================\n")
             Main()
     except KeyboardInterrupt:
+        print("\n================EXIT================\n")
         exit()
 
 
